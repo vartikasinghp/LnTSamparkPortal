@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampark Portal</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+  
+   
+
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Left Section (Logo) -->
+            <div class="logo-section">
+                <img src="/images/left.jpg" alt="L&T Energy CarbonLite Solutions">
+            </div>
+
+            <!-- Middle Section (Sampark) -->
+            <div class="sampark-section">
+                <img src="/images/middle.jpg" alt="संपर्क Sampark">
+                <div class="vertical-line"></div>
+                <span class="unit-name">Unit - Department Name</span>
+            </div>
+
+            <!-- Right Section (Certification) -->
+            <div class="certification-section">
+                <img src="/images/rhs.png" alt="Great Place To Work Certified">
+            </div>
+        </div>
+    </header>
+
+    
+ 
+
+
+
+
+
+<!-- Navigation Menu -->
+<nav class="navbar">
+    <ul>
+        <li><a href="/Home/Index" class="active">Home</a></li>
+            <li><a href="/ScheduleDiscussion/ScheduleDiscussion" class="active">Schedule Discussion</a></li>
+
+            <li><a href="/Home/UpdateRecords" class="active">Update Records of Conducted Meeting </a></li>
+            <li><a href="/Home/DownloadReport" class="active">Download Report</a></li>
+            <li><a href="/Home/About" class="active">About</a></li>
+
+        </ul> @if (User.Identity.IsAuthenticated)
+        {
+            <span class="welcome-user">Welcome, @User.Identity.Name</span>
+        }
+</nav>
+
+
+    </ul>
+    <div class="navbar-right">
+       
+    </div>
+    </nav>
+
+    
+            @RenderBody()
+
+
+    <footer style="background-color: #003366; color: white; text-align: center; padding: 10px 20px; position: fixed; bottom: 0; width: 100%; font-size: 14px;">
+        <p style="color: white;">&copy; L&T all rights reserved</p>
+    </footer>
+
+
+    <script src="~/js/scripts.js"></script>
+</body>
+</html>

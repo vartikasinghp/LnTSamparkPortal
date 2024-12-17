@@ -1,0 +1,195 @@
+﻿@model DashboardViewModel
+<main class="main-content">
+    <div class="status-bars">
+        <div class="status-bar green">
+            <span>Meetings Done – @Model.ScheduledMeetings.Count()</span>
+            <span>@(100 * Model.ScheduledMeetings.Count() / 20)%</span>
+        </div>
+        <div class="status-bar red">
+            <span>Pending Sampark – @Model.OverdueMeetings.Count()</span>
+            <span>@(100 * Model.OverdueMeetings.Count() / 40)%</span>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Meetings Scheduled -->
+        <div class="meeting-cards">
+            <h3 class="section-title">Meetings Scheduled - @Model.ScheduledMeetings.Count()</h3>
+            @foreach (var meeting in Model.ScheduledMeetings)
+            {
+                <div class="employee-card card-scheduled">
+                    <div class="profile-pic" onclick="showEmployeeDetails()">
+                        <!-- Dynamic Employee Image with Fallback -->
+                        <img src="@meeting.Employee.PhotoUrl" alt="Employee Photo" onerror="this.src='https://via.placeholder.com/50';">
+                    </div>
+                    <div class="card-details">
+                        <h4>@meeting.Employee.Name</h4> <!-- Access employee name correctly -->
+                        <p>Schedule Date: @meeting.ScheduleDate.ToString("dd-MM-yyyy")</p> <!-- Replaced LastMeetingDate with ScheduleDate -->
+                    </div>
+                    <div class="card-icons">
+                        <svg class="icon note-icon" onclick="showNotesPopup()" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2" />
+                            <path d="M12 6v6l4 2" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Overdue Meetings -->
+        <div class="meeting-cards">
+            <h3 class="section-title">Overdue - @Model.OverdueMeetings.Count()</h3>
+            @foreach (var meeting in Model.OverdueMeetings)
+            {
+                <div class="employee-card card-overdue">
+                    <div class="profile-pic">
+                        <img src="@meeting.Employee.PhotoUrl" alt="Employee Photo" onerror="this.src='https://via.placeholder.com/50';">
+                    </div>
+                    <div class="card-details">
+                        <h4>@meeting.Employee.Name</h4> 
+                        <p>Schedule Date: @meeting.ScheduleDate.ToString("dd-MM-yyyy")</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Due in Next Month Meetings -->
+        <div class="meeting-cards">
+            <h3 class="section-title">Due in Next Month - @(Model.DueNextMonthMeetings?.Count() ?? 0)</h3>
+            @foreach (var meeting in Model.DueNextMonthMeetings)
+            {
+                <div class="employee-card card-due">
+                    <div class="profile-pic">
+                        <img src="@meeting.Employee.PhotoUrl" alt="Employee Photo" onerror="this.src='https://via.placeholder.com/50';">
+                    </div>
+                    <div class="card-details">
+                        <h4>@meeting.Employee.Name</h4> <!-- Correctly accessing employee name -->
+                        <p>Schedule Date: @meeting.ScheduleDate.ToString("dd-MM-yyyy")</p> <!-- Replaced LastMeetingDate with ScheduleDate -->
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Recently Covered Meetings -->
+        <div class="meeting-cards">
+            <h3 class="section-title">Meetings Recently Covered - @Model.CoveredMeetings?.Count()</h3>
+            @foreach (var meeting in Model.CoveredMeetings)
+            {
+                <div class="employee-card card-covered">
+                    <div class="profile-pic">
+                        <img src="@meeting.Employee.PhotoUrl" alt="Employee Photo" onerror="this.src='https://via.placeholder.com/50';">
+                    </div>
+                    <div class="card-details">
+                        <h4>@meeting.Employee.Name</h4> <!-- Correctly accessing employee name -->
+                        <p>Schedule Date: @meeting.ScheduleDate.ToString("dd-MM-yyyy")</p> <!-- Replaced LastMeetingDate with ScheduleDate -->
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="chart-calendar-container">
+        <div class="input-container">
+            <div class="chart-container">
+                <canvas id="coverageChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        
+        async function fetchMeetingData() {
+            try {
+                const response = await fetch('@Url.Action("GetMeetingData", "Home")');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching meeting data:', error);
+                return []; 
+            }
+        }
+
+       
+        async function initializeChart() {
+            const meetingData = await fetchMeetingData();
+
+            if (meetingData.length === 0) {
+                console.error('No data available for the chart');
+                return;
+            }
+
+         
+            const labels = meetingData.map(item => item.status);
+            const counts = meetingData.map(item => item.count);
+
+            const colors = ["#22c55e", "#dc2626", "#eab308", "#3b82f6", "#6ee7b7"];
+            const backgroundColors = Array(meetingData.length).fill().map((_, i) => colors[i % colors.length]);
+
+            const ctx = document.getElementById("coverageChart").getContext("2d");
+
+          
+            const data = {
+                labels: labels,
+                datasets: [{
+                    data: counts,
+                    backgroundColor: backgroundColors, 
+                    hoverBackgroundColor: backgroundColors,
+                    borderColor: "#ffffff",
+                    borderWidth: 2,
+                }],
+            };
+
+            const config = {
+                type: "pie",
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    const total = counts.reduce((a, b) => a + b, 0);
+                                    const percentage = (context.raw / total * 100).toFixed(2);
+                                    return `${context.label}: ${percentage}%`;
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+
+            new Chart(ctx, config);
+        }
+
+        
+        initializeChart();
+    </script>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="nav-button" onclick="previousMonth()">Previous</button>
+                <h3 id="currentMonth">December 2024</h3>
+                <button class="nav-button" onclick="nextMonth()">Next</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+    </div>
+</main>
+
+<!-- Additional loop for meetings -->
+@foreach (var meeting in Model.Meeting ?? Enumerable.Empty<Meeting>())
+{
+    <div>
+        <p>Meeting ID: @meeting.MeetingId</p>
+        <p>Status: @meeting.Status</p>
+        <p>Schedule Date: @meeting.ScheduleDate.ToString("dd-MM-yyyy")</p> <!-- Replaced LastMeetingDate with ScheduleDate -->
+        <p>Employee Name: @meeting.Employee.Name</p> <!-- Accessing employee name -->
+        <p>Employee Photo: <img src="@meeting.Employee.PhotoUrl" alt="Employee Photo" /></p> <!-- Accessing employee photo -->
+    </div>
+}
+

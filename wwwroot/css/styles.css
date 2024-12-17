@@ -1,0 +1,1615 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1; 
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left Section (Logo) */
+.logo-section img {
+    height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 30px;
+    padding-right: 20px; 
+}
+
+/* Middle Section (Sampark) */
+.sampark-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 0 20px; 
+}
+
+    .sampark-section img {
+        height: 80px;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+.vertical-line {
+    width: 4px;
+    height: 70px; 
+    background-color: #b3b1b1;
+    margin: 0 10px; 
+}
+
+
+.unit-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Right Section (Certification) */
+.certification-section img {
+    height: 60px;
+    max-width: 100%;
+    object-fit: contain;
+    position: relative;
+    top: -20px;
+    padding-left: 20px; 
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #003366;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+   
+    top: -20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+.navbar-left {
+    display: flex;
+}
+
+    .navbar-left li {
+        margin-right: 15px;
+    }
+
+.navbar-right {
+    margin-left: auto;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .navbar a.active {
+        color: white;
+        font-weight: bold;
+    }
+
+    .navbar a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #0056b3;
+    }
+
+
+.welcome-user {
+    font-weight: bold;
+    color: white;
+}
+
+/* Middle image styling */
+.middle-image {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.main-content {
+
+
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.status-bars {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+/* General Layout and Flexbox */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Main content + Sidebar */
+    gap: 1rem;
+}
+
+.status-bar {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+    .status-bar.green {
+        background-color: #22c55e;
+    }
+
+    .status-bar.red {
+        background-color: #ef4444;
+    }
+
+/* Sidebar Styles */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 300px;
+    margin: 2rem auto;
+}
+
+/* Section and Card Layout */
+.meetings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meeting-cards, .employee-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.meeting-cards {
+    margin-bottom: 1rem;
+}
+
+.employee-card:hover {
+    transform: scale(1.02); /* Subtle hover effect */
+}
+
+.card-grid, .employee-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+/* Responsive grid for cards */
+.card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+}
+
+.employee-cards {
+    max-height: 300px; /* Add scrolling for overflow */
+    overflow-y: auto;
+    padding-right: 10px; /* Padding for scroll space */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Consistent grid for cards */
+}
+
+.card-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Icon Styles */
+.icon {
+    width: 20px;
+    height: 20px;
+    color: #666;
+    cursor: pointer;
+}
+
+    .icon:hover {
+        color: #000;
+    }
+
+/* Card Status Styles */
+.card-scheduled {
+    background-color: #dbeafe;
+    border-left: 4px solid #3b82f6;
+}
+
+.card-overdue {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+}
+
+.card-due {
+    background-color: #fef3c7;
+    border-left: 4px solid #eab308;
+}
+
+.card-covered {
+    background-color: #dcfce7;
+    border-left: 4px solid #22c55e;
+}
+
+/* Card Content and Text Styling */
+.section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card-details h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: #111;
+}
+
+.card-details p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-details {
+    flex: 1;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ddd;
+}
+
+    .profile-pic img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%; /* Makes it circular */
+        object-fit: cover; /* Ensures proper cropping */
+    }
+
+/* Scrollbar Styling */
+.employee-cards::-webkit-scrollbar {
+    width: 8px;
+}
+
+.employee-cards::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
+.employee-cards::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .status-bars {
+        flex-direction: column;
+    }
+}
+
+.chart-calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between the chart and the calendar */
+    margin-top: 20px;
+}
+
+.pie-chart-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.coverageChart {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #ffd700 13%, #ffffff 33%);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+    .logo-section img {
+        height: 90px;
+    }
+
+.sampark-section {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+    .sampark-section img {
+        height: 90px;
+        margin-right: 20px;
+    }
+
+/* .sampark-section::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 2px;
+    background-color: #000;
+    right: 0;
+    top: 25%;
+} */
+
+.unit-name {
+    font-size: 26px;
+    color: #000;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.certification-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+    .certification-section img {
+        height: 140px;
+    }
+
+/* Navbar Styles */
+.navbar {
+    background-color: #003366;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: -20px;
+}
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        display: block;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+/* Content Styles */
+.middle-image {
+    display: block;
+    max-width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Calendar and Chart Container */
+/* Calendar Container */
+.calendar-container {
+    width: 350px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #4487e5;
+    color: #fff;
+}
+
+.nav-button {
+    padding: 5px 15px;
+    background-color: #ffffff;
+    color: #0a85d7;
+    border: 1px solid #194ed6;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .nav-button:hover {
+        background-color: #4CAF50;
+        color: #ffffff;
+    }
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.calendar-cell {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+    .calendar-cell:hover {
+        background-color: #e0f7fa;
+    }
+
+.dot-container {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+    .dot.red {
+        background-color: red;
+    }
+
+    .dot.blue {
+        background-color: blue;
+    }
+
+    .dot.green {
+        background-color: green;
+    }
+
+
+/* Meeting List Styles */
+.meeting-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+    .meeting-list li {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: #555;
+        margin: 5px 0;
+    }
+
+/* Meeting Indicator Dots */
+.meeting-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+    /* Status Colors for Meeting Indicators */
+    .meeting-indicator.scheduled {
+        background-color: #3b82f6; /* Blue */
+    }
+
+    .meeting-indicator.overdue {
+        background-color: #dc2626; /* Red */
+    }
+
+    .meeting-indicator.completed {
+        background-color: #22c55e; /* Green */
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar-container {
+        max-width: 95%; /* Full width for smaller screens */
+        padding: 15px;
+    }
+
+    .calendar-grid {
+        gap: 5px; /* Reduce gap for smaller screens */
+    }
+
+    .nav-button {
+        padding: 6px 12px;
+        font-size: 0.85rem; /* Smaller button text */
+    }
+}
+
+/* Interactive Hover Animations */
+.calendar-day:hover .date {
+    color: #007BFF;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.calendar-day:hover .meeting-list li {
+    color: #333;
+    font-weight: bold;
+}
+
+#coverageChart {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#calendar {
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-day {
+    padding: 10px;
+    border: 1px solid #ddd;
+    position: relative;
+    font-size: 0.9em;
+}
+
+    .calendar-day:hover {
+        background-color: #f3f4f6;
+        cursor: pointer;
+    }
+
+.meeting-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+    .meeting-indicator.scheduled {
+        background-color: #3b82f6;
+    }
+
+    .meeting-indicator.overdue {
+        background-color: #dc2626;
+    }
+
+    .meeting-indicator.completed {
+        background-color: #22c55e;
+    }
+
+/*shared css file */
+/* Reset and Base Styles */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: #000080;
+    line-height: 1.6;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(to right, rgba(0, 0, 128, 0.95), rgba(0, 86, 179, 0.95));
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 128, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.header-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content Area */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 128, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Form Elements */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000080;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid rgba(0, 0, 128, 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #0056b3;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+/* Button Styles */
+button {
+    background: linear-gradient(to right, #000080, #0056b3);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    button:hover {
+        background: linear-gradient(to right, #0056b3, #006ee6);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 128, 0.2);
+    }
+
+    button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 128, 0.2);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+
+    body {
+        background-attachment: scroll;
+    }
+}
+
+/* Schedule Section */
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fc;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Labels and Inputs */
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000080;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input {
+    font-size: 16px;
+    padding: 0.75rem;
+    width: 100%; /* Full width for consistency */
+    box-sizing: border-box;
+    border: 2px solid #e0e0ff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+    input:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+/* Form Group */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+    .form-group i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #0056b3;
+    }
+
+/* Buttons */
+button, .btn {
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #000080;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+    }
+
+.btn-secondary {
+    background: #f0f4ff;
+    color: #000080;
+    border: 2px solid #000080;
+}
+
+    .btn-secondary:hover {
+        background: #e0e0ff;
+        color: #000080;
+    }
+
+/* Animated Form Section */
+.schedule-form-container {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 128, 0.1);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Info Cards and Alerts */
+.time-recommendation {
+    background: #f0f4ff;
+    border-left: 4px solid #000080;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #444;
+    border-radius: 8px;
+}
+
+    .time-recommendation i {
+        color: #000080;
+        margin-right: 0.5rem;
+    }
+
+/* Time Slots */
+.time-slots {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.time-slot {
+    flex: 1;
+}
+
+/* Display */
+.duration-display {
+    text-align: center;
+    padding: 1rem;
+    background: #f0f4ff;
+    border-radius: 8px;
+    margin: 1rem 0;
+    color: #000080;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .time-slots {
+        flex-direction: column;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+
+/*download section css */
+h1 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f3f3f6;
+}
+
+p {
+    font-size: 1rem;
+    color: #484646;
+    margin-top: 0.5rem;
+}
+
+/* Report Options Section */
+.report-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000080;
+}
+
+select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0ff;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    width: 200px;
+}
+
+    select:focus {
+        border-color: #0056b3;
+        outline: none;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+/* Button Styles */
+.btn {
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #000080, #0056b3);
+    color: white;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(to right, #0056b3, #006ee6);
+    }
+
+@media (max-width: 768px) {
+    .report-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    select {
+        width: 100%;
+    }
+}
+
+
+
+.container {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+input[list] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    select:focus,
+    input[list]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        outline: none;
+    }
+
+input[list] {
+    appearance: none; /* Remove browser default dropdown indicator */
+}
+
+select {
+    appearance: none; /* Remove default dropdown style */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M0 0h10L5 5z' fill='%23333'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    button:hover {
+        background-color: #0056b3;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+/*css for employee card*/
+
+/* Global Styling */
+
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+    .icon:hover {
+        transform: scale(1.1);
+        fill: #007BFF;
+    }
+
+/* Popup Styling */
+/* Popup container styling */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for emphasis */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup content styling */
+.popup-content {
+    background: linear-gradient(145deg, #f9f9f9, #eaeaea); /* Subtle gradient for elegance */
+    padding: 30px;
+    width: 70%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
+
+    /* Close button styling */
+    .popup-content .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #555;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+        .popup-content .close:hover {
+            color: #f00; /* Red on hover for visibility */
+        }
+
+/* Grid layout for the popup */
+.employee-details-grid {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* Employee photo styling */
+.employee-photo img {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px; /* Slightly larger rounding for a modern look */
+    object-fit: cover;
+    border: 3px solid #ddd; /* Soft border for contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Employee info list styling */
+.employee-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+    .employee-info li {
+        margin-bottom: 12px;
+        font-size: 18px;
+        color: #444; /* Professional text color */
+    }
+
+    .employee-info strong {
+        color: #222; /* Emphasized label */
+    }
+
+/* Add a professional title style */
+.popup-content h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Saved notes styling */
+#savedNotes {
+    margin-top: 8px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .employee-details-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .employee-photo img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
+/*meetings icon popup*/
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay for emphasis */
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* Handle smaller screens */
+}
+
+.popup-content {
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Subtle gradient */
+    padding: 25px;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+    position: relative;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    animation: fadeIn 0.3s ease-out;
+}
+
+    .popup-content h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .popup-content .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 22px;
+        color: #777;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+        .popup-content .close:hover {
+            color: #ff4444;
+        }
+
+/* Popup animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Toolbar styles */
+.toolbar {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 12px;
+    justify-content: center; /* Center-align buttons */
+}
+
+    .toolbar button {
+        padding: 8px 16px;
+        background-color: #007bff; /* Vibrant blue */
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    }
+
+        .toolbar button:hover {
+            background-color: #0056b3; /* Darker blue */
+            transform: translateY(-2px); /* Lift effect */
+        }
+
+/* Editable area */
+.editable-area {
+    width: 100%;
+    min-height: 180px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    color: #444;
+    background-color: #fefefe;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1); /* Inset shadow for depth */
+    transition: border-color 0.3s;
+}
+
+    .editable-area:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+/* Image preview section */
+#imagePreview img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+    #imagePreview img:hover {
+        transform: scale(1.05);
+    }
+
+/* Rating section */
+.rating-section {
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+    .rating-section label {
+        margin-right: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .rating-section select {
+        padding: 6px 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: border-color 0.3s;
+    }
+
+        .rating-section select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+/* Dropdown Button */
+.dropdown-button {
+    background-color: #007bff; /* Vibrant blue */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+    .dropdown-button:hover {
+        background-color: #0056b3; /* Darker blue for hover */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* White background */
+    min-width: 180px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow with more spread */
+    border-radius: 6px; /* Rounded corners for a smoother look */
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 8px; /* Small gap from the button */
+}
+
+    /* Dropdown Items */
+    .dropdown-content button {
+        padding: 10px 20px;
+        width: 100%;
+        background-color: #fff; /* White background */
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+        color: #333; /* Dark text */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    }
+
+        /* Hover Effect on Dropdown Items */
+        .dropdown-content button:hover {
+            background-color: #f1f1f1; /* Light gray on hover */
+            color: #007bff; /* Highlight text with blue */
+        }
+
+/* Show dropdown content when hovering the dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Optional: Adding a small triangle/arrow indicator */
+.dropdown:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #007bff transparent transparent transparent; /* Blue arrow pointing down */
+}
+
+
+/* warning message is updated */
+#warning-message {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+
+/* download option css */
+
+
+/* General Container Styling */
+.container {
+    padding: 20px;
+}
+
+/* Section Header Styling */
+.section-header {
+    margin-bottom: 20px;
+}
+
+/* Filter Section Styling */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.report-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table Header Styling */
+.report-table th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Table Data Styling */
+.report-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #555;
+}
+
+/* Button Styling */
+.report-table .schedule-btn,
+.report-table .update-status-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    /* Button Hover Effects */
+    .report-table .schedule-btn:hover,
+    .report-table .update-status-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Export Button Section */
+.export-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Export Button Styling */
+#export-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    /* Export Button Hover Effects */
+    #export-btn:hover {
+        background-color: #218838;
+    }
+
+
+/*HR-Dashboard*/

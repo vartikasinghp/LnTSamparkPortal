@@ -1,0 +1,58 @@
+﻿@{
+    // You might need to declare your model type explicitly, depending on the context
+    // For example: @model IEnumerable<YourNamespace.Meeting>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Meeting Subject</th>
+            <th>Employee</th>
+            <th>Schedule Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Duration</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var meeting in Model)
+        {
+            <tr>
+                <td>@meeting.Subject</td>  <!-- Fixed the typo in Subject -->
+                <td>@meeting.Employee.EmployeeName</td>  <!-- Corrected employee display -->
+                <td>@meeting.ScheduleDate?.ToString("d") ?? "N/A"</td>
+                <td>@meeting.StartTime?.ToString(@"hh\:mm") ?? "N/A"</td>
+                <td>@meeting.EndTime?.ToString(@"hh\:mm") ?? "N/A"</td>
+                <td>
+                    @if (meeting.Duration.HasValue)
+                    {
+                        @meeting.Duration.Value.ToString(@"hh\:mm")
+                    }
+                    else
+                    {
+                        "N/A"
+                    }
+                </td>
+                <td>@meeting.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<label asp-for="EmployeeId" class="control-label">Employee</label>
+<select asp-for="EmployeeId" class="form-control">
+    <option value="">Select Employee</option>
+    @if (ViewBag.Employees != null)
+    {
+        foreach (var employee in ViewBag.Employees as List<Employee>)
+        {
+            <option value="@employee.EmployeeId">@employee.Name</option>
+        }
+    }
+    else
+    {
+        <option value="">No employees available</option>
+    }
+</select>
+<span asp-validation-for="EmployeeId" class="text-danger"></span>

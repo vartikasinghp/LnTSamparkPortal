@@ -1,0 +1,64 @@
+﻿@model samp.Models.Meeting
+
+@{
+    ViewData["Title"] = "Schedule Discussion";
+}
+
+<main>
+    <header>
+        <h1>Schedule Meetings</h1>
+    </header>
+    <div class="container">
+        @using (Html.BeginForm("ScheduleDiscussion", "ScheduleDiscussion", FormMethod.Post, new { id = "schedule-form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label">Employee</label>
+                <select asp-for="EmployeeId" class="form-control">
+                    <option value="">Select Employee</option>
+                    @if (ViewBag.Employees != null)
+                    {
+                        foreach (var employee in ViewBag.Employees)
+                        {
+                            <option value="@employee.EmployeeId">@employee.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="">No employees available</option>
+                    }
+                </select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MeetingSubject" class="control-label">Meeting Subject</label>
+                <input asp-for="MeetingSubject" class="form-control" />
+                <span asp-validation-for="MeetingSubject" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ScheduleDate" class="control-label">Schedule Date</label>
+                <input asp-for="ScheduleDate" class="form-control" type="date" />
+                <span asp-validation-for="ScheduleDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label">Start Time</label>
+                <input asp-for="StartTime" class="form-control" type="time" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label">End Time</label>
+                <input asp-for="EndTime" class="form-control" type="time" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Schedule Meeting</button>
+            </div>
+        }
+    </div>
+</main>

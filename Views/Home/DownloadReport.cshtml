@@ -1,0 +1,88 @@
+﻿@model IEnumerable<samp.Models.Meeting>
+
+@{
+    ViewBag.Title = "Meeting List";
+}
+
+<main>
+    <div class="container">
+        <header class="section-header">
+            <h1>Download Report</h1>
+        </header>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <label for="status-filter">Filter by Status:</label>
+            <select id="status-filter" onchange="filterMeetings()">
+                <option value="all" selected="@(ViewBag.Status == "all")">All</option>
+                <option value="covered" selected="@(ViewBag.Status == "covered")">Covered</option>
+                <option value="overdue" selected="@(ViewBag.Status == "overdue")">Overdue</option>
+                <option value="scheduled" selected="@(ViewBag.Status == "scheduled")">Scheduled</option>
+            </select>
+        </div>
+
+        <!-- Employee Table -->
+        <div class="report-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Employee</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any()) 
+                    {
+                        @foreach (var meeting in Model)
+                        {
+                            <tr>
+                                <td>@meeting.EmployeeId</td>        
+                                <td>@meeting.Employee</td>        
+                                <td>@meeting.Status</td>          
+
+                                <td>
+                                    @if (meeting.Status == "overdue")
+                                    {
+                                        @* Button to update the status *@
+                                        @using (Html.BeginForm("UpdateStatus", "Meeting", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.HiddenFor(m => meeting.EmployeeId)  <!-- Changed from PSNo to EmployeeId -->
+                                            <button type="submit" name="status" value="covered" class="btn btn-warning">Mark as Covered</button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-secondary" disabled>Update Status</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">No meetings available.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Button -->
+        <div class="export-section">
+            <a href="@Url.Action("ExportToExcel", "Meeting", new { status = ViewBag.Status })" class="btn btn-primary">
+                Export to Excel
+            </a>
+        </div>
+    </div>
+</main>
+
+<script>
+    function filterMeetings() {
+        var status = document.getElementById("status-filter").value;
+        window.location.href = "?status=" + status;
+    }
+</script>
